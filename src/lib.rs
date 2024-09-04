@@ -1,6 +1,8 @@
-pub use inner_sibling::returns_leaked_type;
+pub fn returns_leaked_type() -> secret::ShouldNotLeak {
+    secret::ShouldNotLeak
+}
 
-mod inner_sibling {
+mod secret {
 
     /// This documentation cannot be read by our library.
     ///
@@ -18,9 +20,5 @@ mod inner_sibling {
         pub fn how_do_i_discover_this(&self) {
             println!("This is undocumented.")
         }
-    }
-
-    pub fn returns_leaked_type() -> ShouldNotLeak {
-        ShouldNotLeak
     }
 }
